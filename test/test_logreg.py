@@ -14,6 +14,7 @@ import numpy as np
 from regression import (logreg, utils)
 from sklearn.preprocessing import StandardScaler
 from sklearn.metrics import log_loss
+import random
 
 # Run with all features.
 all_features = [
@@ -107,6 +108,7 @@ def test_training():
 	"""Confirm training improves the performance."""
 
 	log_model.reset_model()
+	random.seed(12)
 
 	# Zero-shot predictions.
 	dummy_y_pred = log_model.make_prediction(X_val)
@@ -120,5 +122,5 @@ def test_training():
 	error = abs(y_pred - y_val)
 
 	# Most of the time the absolute error should be less often with the
-	# trained model.
-	assert sum(error < dummy_error) / len(error) > 0.6 # Usually ~85%
+	# trained model. Here it's better more than 90% of the time.
+	assert sum(error < dummy_error) / len(error) > 0.9
