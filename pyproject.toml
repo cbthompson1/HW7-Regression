@@ -21,6 +21,7 @@ dependencies = [
     "pytest",
     "numpy",
     "matplotlib",
+    "pandas",
 ]
 requires-python = ">=3.12"
 
